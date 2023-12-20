@@ -4,19 +4,21 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.Drive;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.Intaking;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.Autos;
+import frc.robot.commands.Drive;
+import frc.robot.commands.Intaking;
+import frc.robot.commands.LimbMove;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Wrist;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,19 +27,23 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+  private Arm arm = new Arm();
+  private Wrist wrist = new Wrist();
   private Joystick joystick = new Joystick(0);
   private JoystickButton intakeButton = new JoystickButton(joystick, 3);
   private JoystickButton outtakeButton = new JoystickButton(joystick, 4);
+  private PS4Controller ps4Controller = new PS4Controller(1);
   private Intake intaking = new Intake();
   private Intaking in = new Intaking(intaking, true);
   private Intaking out = new Intaking(intaking, false);
   private DriveTrain driveTrain = new DriveTrain();
   private Drive drive = new Drive(driveTrain, joystick);
+  private LimbMove armMove = new LimbMove(arm, 0);
+  private LimbMove wristMove = new LimbMove(wrist, 0);
 
 
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -69,6 +75,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return Autos.exampleAuto(null);
   }
 }

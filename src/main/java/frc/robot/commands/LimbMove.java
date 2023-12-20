@@ -4,12 +4,11 @@
 
 package frc.robot.commands;
 
-import frc.robot.slicelibs.PositionalSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.slicelibs.PositionalSubsystem;
 
 /** An example command that uses an example subsystem. */
-public class ArmMove extends CommandBase {
+public class LimbMove extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final PositionalSubsystem m_subsystem;
   double position = 0;
@@ -18,7 +17,7 @@ public class ArmMove extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ArmMove(PositionalSubsystem subsystem, double position) {
+  public LimbMove(PositionalSubsystem subsystem, double position) {
     m_subsystem = subsystem;
     this.position = position;
     // Use addRequirements() here to declare subsystem dependencies.
