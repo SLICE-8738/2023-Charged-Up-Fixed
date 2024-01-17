@@ -15,6 +15,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Intaking;
 import frc.robot.commands.LimbMove;
+import frc.robot.commands.Sequential;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Arm;
@@ -40,6 +41,7 @@ public class RobotContainer {
   private Drive drive = new Drive(driveTrain, joystick);
   private LimbMove armMove = new LimbMove(arm, 0);
   private LimbMove wristMove = new LimbMove(wrist, 0);
+  private Sequential sequential = new Sequential(arm, wrist, intaking);
 
 
   private final CommandXboxController m_driverController =
