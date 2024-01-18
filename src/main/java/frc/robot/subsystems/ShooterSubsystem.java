@@ -30,8 +30,13 @@ public class ShooterSubsystem extends SubsystemBase {
     motors.set(1);
   }
 
+  public void stopSpin(){
+    motors.set(0);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
 }
+
