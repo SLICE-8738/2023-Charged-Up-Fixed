@@ -21,6 +21,7 @@ public class ShooterSubsystem extends SubsystemBase {
   public ShooterSubsystem() {
     frontMotor = new CANSparkMax(16, MotorType.kBrushed);
     backMotor = new CANSparkMax(17, MotorType.kBrushed);
+    backMotor.setInverted(true);
 
     motors = new MotorControllerGroup(frontMotor, backMotor);
   }
